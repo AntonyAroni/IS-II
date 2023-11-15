@@ -118,6 +118,28 @@ public class TestCase {
         // ASSERTS
         assertEquals("-90",result);
     }
+    @Test
+    public void Invalidvalue() {
+        driver.navigate().to("http://www.calculator.net/");
+
+        driver.manage().window().maximize();
+
+        driver.findElement(By.xpath("//*[@id=\"homelistwrap\"]/div[3]/div[2]/a")).click();
+
+        driver.findElement(By.xpath("//*[@id=\"content\"]/table[2]/tbody/tr/td/div[3]/a")).click();
+
+        driver.findElement(By.id("cpar1")).sendKeys("XD");
+
+        driver.findElement(By.id("cpar2")).sendKeys("30");
+
+        driver.findElement(By.xpath("//*[@id=\"content\"]/form[1]/table/tbody/tr[2]/td/input[2]")).click();
+
+        String result =
+                driver.findElement(By.xpath("//*[@id=\"content\"]/p[2]/font")).getText();
+        
+        // ASSERTS
+        assertEquals("Please provide two numeric values in any fields below.",result);
+    }
 	
    public static void main(String[] args) {
    	//Set up web driver (chrome, firefox,...)
